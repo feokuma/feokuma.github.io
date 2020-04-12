@@ -1,3 +1,37 @@
-h1 {
-    color: blue;
+* {
+    font-family: monospace;
 }
+
+body {
+    background-color: rgb(219, 219, 219);
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+header {
+    width: 940px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+section {
+    width: 940px;
+    margin: 0 auto;
+}
+
+/* Color Theme Swatches in Hex */
+.Heap-of-digital-gears-on-background-1-hex { color: #113059; }
+.Heap-of-digital-gears-on-background-2-hex { color: #6093BF; }
+.Heap-of-digital-gears-on-background-3-hex { color: #C4DDF2; }
+.Heap-of-digital-gears-on-background-4-hex { color: #096873; }
+.Heap-of-digital-gears-on-background-5-hex { color: #BFB580; }
