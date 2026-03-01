@@ -14,6 +14,7 @@ export type Post = {
   date: string;
   excerpt: string;
   coverImage?: string;
+  readingTimeMinutes: number;
 };
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
@@ -46,6 +47,11 @@ function readPostFile(slug: string) {
   return matter(fileContents);
 }
 
+function calculateReadingTimeMinutes(content: string, wordsPerMinute = 200) {
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / wordsPerMinute));
+}
+
 export function getAllPosts(): Post[] {
   const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
 
@@ -54,6 +60,7 @@ export function getAllPosts(): Post[] {
     .map((entry) => {
       const slug = entry.name;
       const { data, content } = readPostFile(slug);
+      const readingTimeMinutes = calculateReadingTimeMinutes(content);
 
       return {
         slug,
@@ -61,6 +68,7 @@ export function getAllPosts(): Post[] {
         date: data.date ?? "",
         excerpt: data.excerpt ?? content.slice(0, 140),
         coverImage: resolveCoverImageUrl(slug, data.coverImage),
+        readingTimeMinutes,
       } satisfies Post;
     });
 
@@ -69,6 +77,7 @@ export function getAllPosts(): Post[] {
 
 export async function getPostBySlug(slug: string) {
   const { data, content } = readPostFile(slug);
+  const readingTimeMinutes = calculateReadingTimeMinutes(content);
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkRehype)
@@ -85,6 +94,7 @@ export async function getPostBySlug(slug: string) {
     title: data.title ?? slug,
     date: data.date ?? "",
     coverImage: resolveCoverImageUrl(slug, data.coverImage),
+    readingTimeMinutes,
     contentHtml: processedContent.toString(),
   };
 }

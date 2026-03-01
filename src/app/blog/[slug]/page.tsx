@@ -62,7 +62,11 @@ export default async function PostPage({ params }: PostPageProps) {
             ) : null}
           </div>
           <h1 className="text-3xl font-bold">{post.title}</h1>
-          <p>{formatDisplayDate(post.date)}</p>
+          <p>
+            {formatDisplayDate(post.date)}
+            <span aria-hidden="true"> • </span>
+            {post.readingTimeMinutes} min de leitura
+          </p>
         </header>
         <section
           className="markdown-content space-y-4"

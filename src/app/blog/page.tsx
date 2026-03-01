@@ -26,11 +26,6 @@ export default function BlogPage() {
           <h1 className="text-4xl font-bold md:text-5xl">Nossos artigos mais recentes</h1>
           <p className="text-[color:var(--ctp-subtext0)]">Conteúdo novo sobre desenvolvimento e tecnologia.</p>
         </div>
-        <nav aria-label="breadcrumb" className="blog-breadcrumb text-sm">
-          <span>Início</span>
-          <span aria-hidden="true">/</span>
-          <span className="font-semibold">Blog</span>
-        </nav>
       </header>
 
       {featuredPost ? (
@@ -44,7 +39,7 @@ export default function BlogPage() {
             <div className="blog-meta text-sm">
               <span>{formatDisplayDate(featuredPost.date)}</span>
               <span aria-hidden="true">•</span>
-              <span>2 min de leitura</span>
+              <span>{featuredPost.readingTimeMinutes} min de leitura</span>
             </div>
           </div>
           <Link href={`/blog/${featuredPost.slug}`} className="blog-featured-visual" aria-label={`Abrir artigo ${featuredPost.title}`}>
@@ -57,7 +52,7 @@ export default function BlogPage() {
                 sizes="(min-width: 900px) 45vw, 100vw"
               />
             ) : null}
-            <span>2 min Read</span>
+            <span>{featuredPost.readingTimeMinutes} min de leitura</span>
           </Link>
         </article>
       ) : null}
@@ -86,7 +81,7 @@ export default function BlogPage() {
               <div className="blog-meta text-sm">
                 <span>{formatDisplayDate(post.date)}</span>
                 <span aria-hidden="true">•</span>
-                <span>2 min de leitura</span>
+                <span>{post.readingTimeMinutes} min de leitura</span>
               </div>
             </div>
           </li>
