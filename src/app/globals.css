@@ -85,7 +85,8 @@ a:hover {
 }
 
 .page-shell {
-  background: var(--ctp-base);
+  background: color-mix(in oklab, var(--ctp-base) 82%, transparent);
+  backdrop-filter: blur(6px);
 }
 
 .post-card {
@@ -97,6 +98,116 @@ a:hover {
 
 .post-card:hover {
   border-color: var(--ctp-lavender);
+}
+
+.blog-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ctp-subtext0);
+}
+
+.blog-tag {
+  width: fit-content;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--ctp-lavender) 34%, transparent);
+  background: color-mix(in oklab, var(--ctp-lavender) 16%, transparent);
+  color: var(--ctp-lavender);
+  padding: 0.22rem 0.66rem;
+  font-size: 0.72rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ctp-subtext0);
+}
+
+.blog-featured-card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--ctp-surface0);
+  border-radius: 1.1rem;
+  background: color-mix(in oklab, var(--ctp-mantle) 80%, transparent);
+  grid-template-columns: 1fr;
+}
+
+.blog-featured-visual {
+  position: relative;
+  min-height: 240px;
+  background:
+    radial-gradient(circle at 15% 12%, color-mix(in oklab, var(--ctp-peach) 75%, transparent), transparent 48%),
+    radial-gradient(circle at 80% 85%, color-mix(in oklab, var(--ctp-lavender) 70%, transparent), transparent 52%),
+    linear-gradient(145deg, color-mix(in oklab, var(--ctp-sapphire) 74%, var(--ctp-crust)), var(--ctp-crust));
+}
+
+.blog-featured-visual span,
+.blog-grid-media span {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--ctp-base) 78%, transparent);
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
+  color: var(--ctp-text);
+}
+
+.blog-grid-card {
+  overflow: hidden;
+  border: 1px solid var(--ctp-surface0);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--ctp-mantle) 80%, transparent);
+}
+
+.blog-grid-card:hover {
+  border-color: var(--ctp-lavender);
+}
+
+.blog-grid-media {
+  position: relative;
+  min-height: 190px;
+}
+
+.blog-grid-media-1 {
+  background:
+    radial-gradient(circle at 25% 30%, color-mix(in oklab, var(--ctp-sky) 58%, transparent), transparent 45%),
+    radial-gradient(circle at 70% 72%, color-mix(in oklab, var(--ctp-peach) 55%, transparent), transparent 45%),
+    linear-gradient(140deg, color-mix(in oklab, var(--ctp-blue) 56%, var(--ctp-base)), var(--ctp-mantle));
+}
+
+.blog-grid-media-2 {
+  background:
+    radial-gradient(circle at 70% 20%, color-mix(in oklab, var(--ctp-yellow) 62%, transparent), transparent 45%),
+    radial-gradient(circle at 15% 70%, color-mix(in oklab, var(--ctp-maroon) 45%, transparent), transparent 48%),
+    linear-gradient(140deg, color-mix(in oklab, var(--ctp-peach) 50%, var(--ctp-crust)), var(--ctp-mantle));
+}
+
+.blog-grid-media-3 {
+  background:
+    radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--ctp-lavender) 60%, transparent), transparent 48%),
+    radial-gradient(circle at 70% 65%, color-mix(in oklab, var(--ctp-sky) 35%, transparent), transparent 44%),
+    linear-gradient(125deg, color-mix(in oklab, var(--ctp-mauve) 36%, var(--ctp-base)), var(--ctp-mantle));
+}
+
+.blog-grid-media-4 {
+  background:
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--ctp-green) 42%, transparent), transparent 45%),
+    radial-gradient(circle at 85% 75%, color-mix(in oklab, var(--ctp-sapphire) 50%, transparent), transparent 45%),
+    linear-gradient(135deg, color-mix(in oklab, var(--ctp-teal) 48%, var(--ctp-base)), var(--ctp-mantle));
+}
+
+@media (min-width: 900px) {
+  .blog-featured-card {
+    grid-template-columns: 1.08fr 1fr;
+  }
+
+  .blog-featured-visual {
+    min-height: 320px;
+  }
 }
 
 .markdown-content {
