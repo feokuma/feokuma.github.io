@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/sync-post-assets.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-post-assets.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:post-assets": "node scripts/sync-post-assets.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
