@@ -17,6 +17,9 @@ export function Header() {
           <span>Feokuma Blog</span>
         </Link>
         <nav className="flex items-center gap-5">
+          <Link href="/" className="underline">
+            Inicio
+          </Link>
           <Link href="/blog" className="underline">
             Blog
           </Link>
