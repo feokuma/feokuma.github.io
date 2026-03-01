@@ -46,7 +46,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <main className="page-shell mx-auto flex min-h-screen w-full max-w-3xl flex-col gap-6 px-6 py-16">
+    <main className="page-shell mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-6 px-6 py-16">
       <article className="space-y-4">
         <header className="space-y-2">
           <div className="post-header-image">
