@@ -2,6 +2,7 @@
 title: "Primeiro post"
 date: "2026-03-01"
 excerpt: "Este é o primeiro artigo do blog em Markdown."
+coverImage: "./header.svg"
 ---
 
 ## Olá, blog

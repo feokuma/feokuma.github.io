@@ -13,23 +13,46 @@ export type Post = {
   title: string;
   date: string;
   excerpt: string;
+  coverImage?: string;
 };
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
+const coverImageCandidates = ["header.avif", "header.webp", "header.jpg", "header.jpeg", "header.png", "header.svg"];
+
+function getPostDirectory(slug: string) {
+  return path.join(postsDirectory, slug);
+}
+
+function resolveCoverImageUrl(slug: string, frontmatterCoverImage?: string) {
+  if (frontmatterCoverImage) {
+    if (frontmatterCoverImage.startsWith("/")) return frontmatterCoverImage;
+
+    const normalizedFileName = frontmatterCoverImage.replace(/^\.\//, "");
+    return `/post-assets/${slug}/${normalizedFileName}`;
+  }
+
+  const postDirectory = getPostDirectory(slug);
+  const coverImageFileName = coverImageCandidates.find((fileName) =>
+    fs.existsSync(path.join(postDirectory, fileName)),
+  );
+
+  if (!coverImageFileName) return undefined;
+  return `/post-assets/${slug}/${coverImageFileName}`;
+}
 
 function readPostFile(slug: string) {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = path.join(getPostDirectory(slug), "index.md");
   const fileContents = fs.readFileSync(fullPath, "utf8");
   return matter(fileContents);
 }
 
 export function getAllPosts(): Post[] {
-  const fileNames = fs.readdirSync(postsDirectory);
+  const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
 
-  const posts = fileNames
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
+  const posts = entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => {
+      const slug = entry.name;
       const { data, content } = readPostFile(slug);
 
       return {
@@ -37,6 +60,7 @@ export function getAllPosts(): Post[] {
         title: data.title ?? slug,
         date: data.date ?? "",
         excerpt: data.excerpt ?? content.slice(0, 140),
+        coverImage: resolveCoverImageUrl(slug, data.coverImage),
       } satisfies Post;
     });
 
@@ -60,6 +84,7 @@ export async function getPostBySlug(slug: string) {
     slug,
     title: data.title ?? slug,
     date: data.date ?? "",
+    coverImage: resolveCoverImageUrl(slug, data.coverImage),
     contentHtml: processedContent.toString(),
   };
 }

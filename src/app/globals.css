@@ -138,10 +138,15 @@ a:hover {
 .blog-featured-visual {
   position: relative;
   min-height: 240px;
+  display: block;
   background:
     radial-gradient(circle at 15% 12%, color-mix(in oklab, var(--ctp-peach) 75%, transparent), transparent 48%),
     radial-gradient(circle at 80% 85%, color-mix(in oklab, var(--ctp-lavender) 70%, transparent), transparent 52%),
     linear-gradient(145deg, color-mix(in oklab, var(--ctp-sapphire) 74%, var(--ctp-crust)), var(--ctp-crust));
+}
+
+.blog-cover-image {
+  object-fit: cover;
 }
 
 .blog-featured-visual span,
@@ -170,6 +175,24 @@ a:hover {
 .blog-grid-media {
   position: relative;
   min-height: 190px;
+  display: block;
+}
+
+.post-header-image {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  border: 1px solid var(--ctp-surface0);
+  border-radius: 1rem;
+  background:
+    radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--ctp-lavender) 55%, transparent), transparent 52%),
+    linear-gradient(130deg, color-mix(in oklab, var(--ctp-sapphire) 52%, var(--ctp-base)), var(--ctp-mantle));
+}
+
+@media (min-width: 900px) {
+  .post-header-image {
+    min-height: 360px;
+  }
 }
 
 .blog-grid-media-1 {
