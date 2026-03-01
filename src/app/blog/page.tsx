@@ -70,7 +70,7 @@ export default function BlogPage() {
                   sizes="(min-width: 1024px) 28vw, (min-width: 768px) 44vw, 100vw"
                 />
               ) : null}
-              <span>2 min Read</span>
+              <span>{post.readingTimeMinutes} min de leitura</span>
             </Link>
             <div className="space-y-3 p-5">
               <p className="blog-tag">Artigo</p>

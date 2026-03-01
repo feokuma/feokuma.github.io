@@ -7,6 +7,10 @@ import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import csharp from "highlight.js/lib/languages/csharp";
+import bash from "highlight.js/lib/languages/bash";
+import shell from "highlight.js/lib/languages/shell";
+import markdown from "highlight.js/lib/languages/markdown";
+import typescript from "highlight.js/lib/languages/typescript";
 
 export type Post = {
   slug: string;
@@ -83,7 +87,11 @@ export async function getPostBySlug(slug: string) {
     .use(remarkRehype)
     .use(rehypeHighlight, {
       languages: {
+        bash,
         csharp,
+        shell,
+        markdown,
+        typescript,
       },
     })
     .use(rehypeStringify)
