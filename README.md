@@ -48,6 +48,8 @@ O `basePath` é configurado automaticamente em CI usando o nome do repositório.
 NEXT_PUBLIC_BASE_PATH=/feokuma-blog npm run build
 ```
 
+Observação: se o repositório de publicação for do tipo `usuario.github.io` (ou `org.github.io`), o `basePath` automático fica vazio para publicar na raiz do domínio.
+
 ## Debug
 
 - Rodar em modo de desenvolvimento:
