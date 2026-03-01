@@ -23,25 +23,26 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
+  let post: Awaited<ReturnType<typeof getPostBySlug>>;
 
   try {
-    const post = await getPostBySlug(slug);
-
-    return (
-      <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col gap-6 px-6 py-16">
-        <article className="space-y-4">
-          <header className="space-y-2">
-            <h1 className="text-3xl font-bold">{post.title}</h1>
-            <p>{post.date}</p>
-          </header>
-          <section
-            className="space-y-4"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
-        </article>
-      </main>
-    );
+    post = await getPostBySlug(slug);
   } catch {
     notFound();
   }
+
+  return (
+    <main className="page-shell mx-auto flex min-h-screen w-full max-w-3xl flex-col gap-6 px-6 py-16">
+      <article className="space-y-4">
+        <header className="space-y-2">
+          <h1 className="text-3xl font-bold">{post.title}</h1>
+          <p>{post.date}</p>
+        </header>
+        <section
+          className="markdown-content space-y-4"
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
+      </article>
+    </main>
+  );
 }

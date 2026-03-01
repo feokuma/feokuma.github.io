@@ -1,8 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext0: #6c6f85;
+  --ctp-surface0: #ccd0da;
+  --ctp-surface1: #bcc0cc;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+
+  --background: var(--ctp-base);
+  --foreground: var(--ctp-text);
 }
 
 @theme inline {
@@ -14,13 +36,150 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --ctp-rosewater: #f5e0dc;
+    --ctp-flamingo: #f2cdcd;
+    --ctp-pink: #f5c2e7;
+    --ctp-mauve: #cba6f7;
+    --ctp-red: #f38ba8;
+    --ctp-maroon: #eba0ac;
+    --ctp-peach: #fab387;
+    --ctp-yellow: #f9e2af;
+    --ctp-green: #a6e3a1;
+    --ctp-teal: #94e2d5;
+    --ctp-sky: #89dceb;
+    --ctp-sapphire: #74c7ec;
+    --ctp-blue: #89b4fa;
+    --ctp-lavender: #b4befe;
+    --ctp-text: #cdd6f4;
+    --ctp-subtext0: #a6adc8;
+    --ctp-surface0: #313244;
+    --ctp-surface1: #45475a;
+    --ctp-base: #1e1e2e;
+    --ctp-mantle: #181825;
+    --ctp-crust: #11111b;
+
+    --background: var(--ctp-base);
+    --foreground: var(--ctp-text);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--ctp-blue);
+  transition: color 160ms ease;
+}
+
+a:hover {
+  color: var(--ctp-lavender);
+}
+
+.site-header,
+.site-footer {
+  background: color-mix(in oklab, var(--ctp-mantle) 88%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.page-shell {
+  background: var(--ctp-base);
+}
+
+.post-card {
+  border: 1px solid var(--ctp-surface0);
+  border-radius: 0.85rem;
+  background: color-mix(in oklab, var(--ctp-mantle) 76%, transparent);
+  padding: 1rem;
+}
+
+.post-card:hover {
+  border-color: var(--ctp-lavender);
+}
+
+.markdown-content {
+  color: var(--ctp-text);
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  color: var(--ctp-lavender);
+  margin-top: 1.25rem;
+  margin-bottom: 0.65rem;
+  font-weight: 700;
+}
+
+.markdown-content p,
+.markdown-content li {
+  color: var(--ctp-subtext0);
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-left: 1.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.markdown-content pre {
+  background: var(--ctp-crust);
+  border: 1px solid var(--ctp-surface0);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.markdown-content code {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.markdown-content :not(pre) > code {
+  background: color-mix(in oklab, var(--ctp-surface0) 45%, transparent);
+  color: var(--ctp-yellow);
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.35rem;
+}
+
+.hljs {
+  color: var(--ctp-text);
+  background: transparent;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-title.function_ {
+  color: var(--ctp-mauve);
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section {
+  color: var(--ctp-green);
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-symbol {
+  color: var(--ctp-peach);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--ctp-subtext0);
+}
+
+.hljs-type,
+.hljs-built_in,
+.hljs-attr {
+  color: var(--ctp-yellow);
+}
+
+.hljs-variable,
+.hljs-property,
+.hljs-params {
+  color: var(--ctp-rosewater);
 }

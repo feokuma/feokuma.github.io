@@ -1,8 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+import csharp from "highlight.js/lib/languages/csharp";
 
 export type Post = {
   slug: string;
@@ -41,7 +45,16 @@ export function getAllPosts(): Post[] {
 
 export async function getPostBySlug(slug: string) {
   const { data, content } = readPostFile(slug);
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeHighlight, {
+      languages: {
+        csharp,
+      },
+    })
+    .use(rehypeStringify)
+    .process(content);
 
   return {
     slug,
