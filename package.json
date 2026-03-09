@@ -7,6 +7,7 @@
     "dev": "next dev",
     "prebuild": "node scripts/sync-post-assets.mjs",
     "build": "next build",
+    "build:watch": "nodemon --watch src --watch content --watch public --watch next.config.ts --watch tsconfig.json --ext ts,tsx,js,mjs,md,mdx,css --exec \"npm run dev\"",
     "start": "next start",
     "lint": "eslint",
     "sync:post-assets": "node scripts/sync-post-assets.mjs"
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "nodemon": "^3.1.14",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

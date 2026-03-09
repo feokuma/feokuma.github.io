@@ -70,6 +70,12 @@ npm run lint
 npm run build
 ```
 
+- Refazer build automaticamente a cada mudança de código:
+
+```bash
+npm run build:watch
+```
+
 - Erros comuns:
 	- Imagem de post não aparece: confirme que o arquivo está em `content/posts/<slug>/` e rode `npm run sync:post-assets`.
 	- Links quebrados no Pages: confirme se o repositório está com Pages via **GitHub Actions** e se o deploy mais recente concluiu com sucesso.
