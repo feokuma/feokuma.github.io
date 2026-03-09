@@ -176,6 +176,10 @@ a:hover {
   position: relative;
   min-height: 190px;
   display: block;
+  background:
+    radial-gradient(circle at 25% 30%, color-mix(in oklab, var(--ctp-sky) 58%, transparent), transparent 45%),
+    radial-gradient(circle at 70% 72%, color-mix(in oklab, var(--ctp-peach) 55%, transparent), transparent 45%),
+    linear-gradient(140deg, color-mix(in oklab, var(--ctp-blue) 56%, var(--ctp-base)), var(--ctp-mantle));
 }
 
 .post-header-image {
@@ -193,34 +197,6 @@ a:hover {
   .post-header-image {
     min-height: 360px;
   }
-}
-
-.blog-grid-media-1 {
-  background:
-    radial-gradient(circle at 25% 30%, color-mix(in oklab, var(--ctp-sky) 58%, transparent), transparent 45%),
-    radial-gradient(circle at 70% 72%, color-mix(in oklab, var(--ctp-peach) 55%, transparent), transparent 45%),
-    linear-gradient(140deg, color-mix(in oklab, var(--ctp-blue) 56%, var(--ctp-base)), var(--ctp-mantle));
-}
-
-.blog-grid-media-2 {
-  background:
-    radial-gradient(circle at 70% 20%, color-mix(in oklab, var(--ctp-yellow) 62%, transparent), transparent 45%),
-    radial-gradient(circle at 15% 70%, color-mix(in oklab, var(--ctp-maroon) 45%, transparent), transparent 48%),
-    linear-gradient(140deg, color-mix(in oklab, var(--ctp-peach) 50%, var(--ctp-crust)), var(--ctp-mantle));
-}
-
-.blog-grid-media-3 {
-  background:
-    radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--ctp-lavender) 60%, transparent), transparent 48%),
-    radial-gradient(circle at 70% 65%, color-mix(in oklab, var(--ctp-sky) 35%, transparent), transparent 44%),
-    linear-gradient(125deg, color-mix(in oklab, var(--ctp-mauve) 36%, var(--ctp-base)), var(--ctp-mantle));
-}
-
-.blog-grid-media-4 {
-  background:
-    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--ctp-green) 42%, transparent), transparent 45%),
-    radial-gradient(circle at 85% 75%, color-mix(in oklab, var(--ctp-sapphire) 50%, transparent), transparent 45%),
-    linear-gradient(135deg, color-mix(in oklab, var(--ctp-teal) 48%, var(--ctp-base)), var(--ctp-mantle));
 }
 
 @media (min-width: 900px) {

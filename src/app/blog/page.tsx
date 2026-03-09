@@ -1,7 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import { FeaturedPostCard } from "@/components/blog/featured-post-card";
-import { PostMeta } from "@/components/blog/post-meta";
+import { RemainingPostCard } from "@/components/blog/remaining-post-card";
 import { getAllPosts } from "@/lib/posts";
 
 export default function BlogPage() {
@@ -20,29 +18,8 @@ export default function BlogPage() {
       {featuredPost ? <FeaturedPostCard post={featuredPost} /> : null}
 
       <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {remainingPosts.map((post, index) => (
-          <li key={post.slug} className="blog-grid-card">
-            <Link href={`/blog/${post.slug}`} className={`blog-grid-media blog-grid-media-${(index % 4) + 1}`} aria-label={`Abrir artigo ${post.title}`}>
-              {post.coverImage ? (
-                <Image
-                  src={post.coverImage}
-                  alt={`Capa do artigo ${post.title}`}
-                  fill
-                  className="blog-cover-image"
-                  sizes="(min-width: 1024px) 28vw, (min-width: 768px) 44vw, 100vw"
-                />
-              ) : null}
-              <span>{post.readingTimeMinutes} min de leitura</span>
-            </Link>
-            <div className="space-y-3 p-5">
-              <p className="blog-tag">Artigo</p>
-              <Link href={`/blog/${post.slug}`} className="line-clamp-2 text-2xl font-semibold leading-tight hover:opacity-85">
-                {post.title}
-              </Link>
-              <p className="line-clamp-3 text-[color:var(--ctp-subtext0)]">{post.excerpt}</p>
-              <PostMeta date={post.date} readingTimeMinutes={post.readingTimeMinutes} className="text-sm" />
-            </div>
-          </li>
+        {remainingPosts.map((post) => (
+          <RemainingPostCard key={post.slug} post={post} />
         ))}
       </ul>
     </main>
