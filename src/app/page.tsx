@@ -22,7 +22,7 @@ export default function HomePage() {
 	return (
 		<main className="page-shell mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-14 md:px-10">
 			<section className="space-y-5">
-				<p className="blog-tag">Bem-vindo</p>
+				<p className="blog-tag">Boas vindas</p>
 				<h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
 					Tecnologia, aprendizado e experiências práticas.
 				</h1>
