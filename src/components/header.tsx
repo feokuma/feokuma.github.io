@@ -24,7 +24,7 @@ export function Header() {
             Blog
           </Link>
           <Link href="/sobre" className="underline">
-            Sobre
+            Sobre o autor
           </Link>
         </nav>
       </div>
