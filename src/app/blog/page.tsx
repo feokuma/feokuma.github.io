@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FeaturedPostCard } from "@/components/blog/featured-post-card";
 import { PostMeta } from "@/components/blog/post-meta";
 import { getAllPosts } from "@/lib/posts";
 
@@ -16,30 +17,7 @@ export default function BlogPage() {
         </div>
       </header>
 
-      {featuredPost ? (
-        <article className="blog-featured-card">
-          <div className="space-y-4 p-6 md:p-8">
-            <p className="blog-tag">Destaque</p>
-            <Link href={`/blog/${featuredPost.slug}`} className="text-3xl font-semibold leading-tight hover:opacity-85">
-              {featuredPost.title}
-            </Link>
-            <p className="text-base text-[color:var(--ctp-subtext0)]">{featuredPost.excerpt}</p>
-            <PostMeta date={featuredPost.date} readingTimeMinutes={featuredPost.readingTimeMinutes} className="text-sm" />
-          </div>
-          <Link href={`/blog/${featuredPost.slug}`} className="blog-featured-visual" aria-label={`Abrir artigo ${featuredPost.title}`}>
-            {featuredPost.coverImage ? (
-              <Image
-                src={featuredPost.coverImage}
-                alt={`Capa do artigo ${featuredPost.title}`}
-                fill
-                className="blog-cover-image"
-                sizes="(min-width: 900px) 45vw, 100vw"
-              />
-            ) : null}
-            <span>{featuredPost.readingTimeMinutes} min de leitura</span>
-          </Link>
-        </article>
-      ) : null}
+      {featuredPost ? <FeaturedPostCard post={featuredPost} /> : null}
 
       <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {remainingPosts.map((post, index) => (
