@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PostMeta } from "@/components/blog/post-meta";
 import { getAllPosts } from "@/lib/posts";
-import { formatDisplayDate } from "@/lib/format-display-date";
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -24,11 +24,7 @@ export default function BlogPage() {
               {featuredPost.title}
             </Link>
             <p className="text-base text-[color:var(--ctp-subtext0)]">{featuredPost.excerpt}</p>
-            <div className="blog-meta text-sm">
-              <span>{formatDisplayDate(featuredPost.date)}</span>
-              <span aria-hidden="true">•</span>
-              <span>{featuredPost.readingTimeMinutes} min de leitura</span>
-            </div>
+            <PostMeta date={featuredPost.date} readingTimeMinutes={featuredPost.readingTimeMinutes} className="text-sm" />
           </div>
           <Link href={`/blog/${featuredPost.slug}`} className="blog-featured-visual" aria-label={`Abrir artigo ${featuredPost.title}`}>
             {featuredPost.coverImage ? (
@@ -66,11 +62,7 @@ export default function BlogPage() {
                 {post.title}
               </Link>
               <p className="line-clamp-3 text-[color:var(--ctp-subtext0)]">{post.excerpt}</p>
-              <div className="blog-meta text-sm">
-                <span>{formatDisplayDate(post.date)}</span>
-                <span aria-hidden="true">•</span>
-                <span>{post.readingTimeMinutes} min de leitura</span>
-              </div>
+              <PostMeta date={post.date} readingTimeMinutes={post.readingTimeMinutes} className="text-sm" />
             </div>
           </li>
         ))}
